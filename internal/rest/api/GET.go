@@ -15,7 +15,7 @@ func (api *Api) Get_Setup() {
 
 		// Проверка входных данных на пустоту
 		if user == "" {
-			c.JSON(http.StatusNotAcceptable, gin.H{"user": user, "status": "nill 'usr'"})
+			c.JSON(http.StatusNotAcceptable, gin.H{"user": user, "status": "nill 'user'"})
 		}
 
 		// получить данные из базы данных

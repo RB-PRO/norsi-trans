@@ -1,6 +1,8 @@
 package rest
 
 import (
+	"log"
+
 	"github.com/RB-PRO/norsi-trans/internal/rest/api"
 )
 
@@ -13,9 +15,13 @@ type Query struct {
 func Start() {
 
 	// Создаём экзепляр API
-	API := api.New()
+	API, ErrorAPI := api.New()
+	if ErrorAPI != nil {
+		log.Fatal(ErrorAPI)
+	}
+	defer API.DB.Close()// Закрыть БД
 
-	// Настраиваем методы
+	// Настраиваем метды
 	API.Get_Setup()
 	API.Post_Setup()
 	API.Delete_Setup()
@@ -23,4 +29,6 @@ func Start() {
 
 	// Запускаем
 	API.R.Run(":8080") // http://localhost:8080
+
+	
 }
