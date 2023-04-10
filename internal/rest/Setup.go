@@ -1,8 +1,6 @@
 package rest
 
 import (
-	"log"
-
 	"github.com/RB-PRO/norsi-trans/internal/rest/api"
 )
 
@@ -12,14 +10,12 @@ type Query struct {
 	Password string `json:"pass"`
 }
 
-func Start() {
-
+func setup() (*api.Api, error) {
 	// Создаём экзепляр API
 	API, ErrorAPI := api.New()
 	if ErrorAPI != nil {
-		log.Fatal(ErrorAPI)
+		return nil, ErrorAPI
 	}
-	defer API.DB.Close()// Закрыть БД
 
 	// Настраиваем метды
 	API.Get_Setup()
@@ -27,8 +23,5 @@ func Start() {
 	API.Delete_Setup()
 	API.Ping_Setup()
 
-	// Запускаем
-	API.R.Run(":8080") // http://localhost:8080
-
-	
+	return API, nil
 }

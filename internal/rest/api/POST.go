@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Добавить запись
 func (api *Api) Post_Setup() {
 	api.R.POST("/add", func(c *gin.Context) {
 
@@ -21,6 +22,12 @@ func (api *Api) Post_Setup() {
 		if Password == "" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "'password' is null"})
 			return
+		}
+
+		// Делаем запрос к БД
+		ErrorAddDB := api.DB.Add(User, Password)
+		if ErrorAddDB != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"status": ErrorAddDB.Error()})
 		}
 
 		// Ответить положительно на ответ

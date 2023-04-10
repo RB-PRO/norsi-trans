@@ -5,10 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Структура API-сервис
 type Api struct {
-	R  *gin.Engine // объект Gin для работы Api
-	DB *bd.Base    // Объект базы данных
-
+	R  *gin.Engine // Объект Gin для работы Ai
+	DB *bd.Base    // Объект базы данны
 }
 
 // Создать экземпляр API сервиса

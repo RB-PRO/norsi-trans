@@ -20,6 +20,9 @@ func (api *Api) Delete_Setup() error {
 
 		// получить данные из базы данных
 		IsDelete := api.DB.Delete(user)
+		if IsDelete!=nil{
+			c.JSON(http.StatusNotAcceptable, gin.H{"user": user, "status": IsDelete.Error()})
+		}
 
 		// Возвращаем результат
 		if IsDelete != nil {

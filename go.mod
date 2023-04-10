@@ -4,7 +4,8 @@ go 1.20
 
 require (
 	github.com/gin-gonic/gin v1.9.0
-	github.com/go-sql-driver/mysql v1.7.0
+	github.com/mattn/go-sqlite3 v1.14.16
+	github.com/ready-steady/assert v0.0.0-20171126095531-4075406641e2
 )
 
 require (

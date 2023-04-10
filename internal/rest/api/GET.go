@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// func (api *Api) Get_Setup(GetD  bd.FuncDef) {
+// Получить запись
 func (api *Api) Get_Setup() {
 	api.R.GET("/user/:name", func(c *gin.Context) {
 
@@ -23,7 +23,7 @@ func (api *Api) Get_Setup() {
 
 		// Возвращаем результат
 		if IsExist != nil {
-			c.JSON(http.StatusOK, gin.H{"user": user, "status": "no value"})
+			c.JSON(http.StatusOK, gin.H{"user": user, "status": IsExist.Error()})
 		} else {
 			c.JSON(http.StatusOK, gin.H{"user": user, "pass": password})
 		}
