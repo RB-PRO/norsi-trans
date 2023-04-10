@@ -2,6 +2,7 @@ package main
 
 import "testing"
 
+// Табличный тест
 var tests = []struct {
 	input16  string
 	output10 string
