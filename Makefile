@@ -1,7 +1,7 @@
 all: run
 
 run:
-	go run cmd/main/main.go
+	go run main.go
 
 push:
 	git push git@github.com:RB-PRO/norsi-trans.git
